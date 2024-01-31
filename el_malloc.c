@@ -66,7 +66,6 @@ el_blockfoot_t *el_get_footer(el_blockhead_t *head) {
     return foot;
 }
 
-// TODO
 // Compute the address of the head for the given foot, which is at a
 // lower address than the foot.
 el_blockhead_t *el_get_header(el_blockfoot_t *foot) {
@@ -90,7 +89,6 @@ el_blockhead_t *el_block_above(el_blockhead_t *block) {
     }
 }
 
-// TODO
 // Return a pointer to the block that is one block lower in memory
 // from the given block. Uses the size of the preceding block found
 // in its foot. DOES NOT follow block->next pointer, looks in adjacent
@@ -185,7 +183,6 @@ void el_init_blocklist(el_blocklist_t *list) {
     list->bytes = 0;
 }
 
-// TODO
 // Add to the front of list; links for block are adjusted as are links
 // within list. Length is incremented and the bytes for the list are
 // updated to include the new block's size and its overhead.
@@ -208,7 +205,6 @@ void el_add_block_front(el_blocklist_t *list, el_blockhead_t *block) {
     list->bytes += (block->size + EL_BLOCK_OVERHEAD);
 }
 
-// TODO
 // Unlink block from the specified list.
 // Updates the length and bytes for that list including
 // the EL_BLOCK_OVERHEAD bytes associated with header/footer.
@@ -227,7 +223,6 @@ void el_remove_block(el_blocklist_t *list, el_blockhead_t *block) {
 
 // Allocation-related functions
 
-// TODO
 // Find the first block in the available list with block size of at
 // least (size + EL_BLOCK_OVERHEAD). Overhead is accounted for so this
 // routine may be used to find an available block to split: splitting
@@ -248,7 +243,6 @@ el_blockhead_t *el_find_first_avail(size_t size) {
     return NULL;
 }
 
-// TODO
 // Set the pointed to block to the given size and add a footer to it. Creates
 // another block above it by creating a new header and assigning it the
 // remaining space. Ensures that the new block has a footer with the correct
@@ -282,7 +276,6 @@ el_blockhead_t *el_split_block(el_blockhead_t *block, size_t new_size) {
     }
 }
 
-// TODO
 // Return pointer to a block of memory with at least the given size
 // for use by the user. The pointer returned is to the usable space,
 // not the block header. Makes use of find_first_avail() to find a
@@ -315,7 +308,6 @@ void *el_malloc(size_t nbytes) {
 
 // De-allocation/free() related functions
 
-// TODO
 // Attempt to merge the block 'lower' with the next block in memory. Does
 // nothing if lower is NULL or not EL_AVAILABLE and does nothing if the next
 // higher block is NULL (because lower is the last block) or not EL_AVAILABLE.
@@ -353,7 +345,7 @@ void el_merge_block_with_above(el_blockhead_t *lower) {
     //Add merged block back to avail list
     el_add_block_front(el_ctl.avail, lower);
 }
-// TODO
+
 // Free the block pointed to by the given ptr. The area immediately
 // preceding the pointer should contain an el_blockhead_t with information
 // on the block size. Attempts to merge the free'd block with adjacent
